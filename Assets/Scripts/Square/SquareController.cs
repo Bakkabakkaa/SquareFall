@@ -8,6 +8,7 @@ public class SquareController : MonoBehaviour
     [SerializeField] private float _speed;
     
     private Rigidbody2D _rigidbody;
+    private Vector2 _direction;
     
     private void Awake()
     {
@@ -18,12 +19,17 @@ public class SquareController : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.rotation += _rotationPower;
-        _rigidbody.linearVelocity = (Vector2.down + Vector2.left) * _speed;
+        _rigidbody.linearVelocity = _direction * _speed;
     }
 
     private int GetRandomSign()
     {
         var randomNumber = Random.Range(0, 2);
         return randomNumber == 1 ? 1 : -1;
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction;
     }
 }
