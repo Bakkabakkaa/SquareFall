@@ -7,9 +7,17 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject _gameScreen;
     [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private GameObject _gameStartScreen;
     [SerializeField] private float _gameOverScreenShowDelay;
 
     private bool _wasGameOver;
+
+    private void Awake()
+    {
+        _gameScreen.SetActive(false);
+        _gameOverScreen.SetActive(false);
+        _gameStartScreen.SetActive(true);
+    }
 
     private void Update()
     {
@@ -39,5 +47,11 @@ public class GameController : MonoBehaviour
     public void OnPlayerDied()
     {
         _wasGameOver = true;
+    }
+
+    public void StartGame()
+    {
+        _gameStartScreen.SetActive(false);
+        _gameScreen.SetActive(true);
     }
 }
