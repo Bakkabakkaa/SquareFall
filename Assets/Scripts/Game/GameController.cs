@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _gameStartScreen;
     [SerializeField] private float _gameOverScreenShowDelay;
+    [SerializeField] private SquareSpawner _squareSpawner;
 
     private bool _wasGameOver;
 
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
     public void OnPlayerDied()
     {
         _wasGameOver = true;
+        _squareSpawner.enabled = false;
     }
 
     public void StartGame()
